@@ -32,8 +32,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def find_post
-    @post = Post.find(params[:id])
+  def destroy
+    @post.destroy
+    redirect_to root_path
   end
 
 
@@ -41,6 +42,10 @@ class PostsController < ApplicationController
   
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+    def find_post
+    @post = Post.find(params[:id])
   end
 
 end
